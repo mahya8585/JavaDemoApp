@@ -1,60 +1,27 @@
 package com.example.javademoapi.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Size;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "expense_applications")
 public class ExpenseApplication {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotNull(message = "Application date is required")
-    @Column(name = "application_date", nullable = false)
     private LocalDate applicationDate;
     
-    @NotBlank(message = "Applicant name is required")
-    @Size(max = 100, message = "Applicant name cannot exceed 100 characters")
-    @Column(name = "applicant_name", nullable = false, length = 100)
     private String applicantName;
     
-    @NotBlank(message = "Department is required")
-    @Size(max = 100, message = "Department name cannot exceed 100 characters")
-    @Column(name = "department", nullable = false, length = 100)
     private String department;
     
-    @NotNull(message = "Amount is required")
-    @DecimalMin(value = "0.01", message = "Amount must be greater than 0")
-    @Column(name = "amount", nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
     
-    @NotBlank(message = "Reason is required")
-    @Size(max = 500, message = "Reason cannot exceed 500 characters")
-    @Column(name = "reason", nullable = false, length = 500)
     private String reason;
     
-    @NotNull(message = "Payment status is required")
-    @Enumerated(EnumType.STRING)
-    @Column(name = "payment_status", nullable = false, length = 20)
     private PaymentStatus paymentStatus;
     
-    @CreationTimestamp
-    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
     
-    @UpdateTimestamp
-    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
     
     // Enum for payment status
