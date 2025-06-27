@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/expense")
+@RequestMapping("/api/expense")
 public class ExpenseController {
     
     private final ExpenseApplicationService expenseApplicationService;
